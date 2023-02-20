@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"sync"
 
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/xorm"
 )
 
@@ -24,7 +25,7 @@ func GetEngine() *xorm.Engine {
 	password := "shadow24"
 	con_addr := "127.0.0.1"
 	con_port := "3306"
-	database := "test"
+	database := "vmimw"
 
 	con_url := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8",
 		username, password, con_addr, con_port, database)
