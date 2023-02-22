@@ -31,7 +31,7 @@ func TestDeleteOneUser(t *testing.T) {
 
 func TestQueryOneUser(t *testing.T) {
 	user_dao := daos.BuildIMUserDao(utils.GetEngine())
-	data := user_dao.Query("vmices")
+	data := user_dao.Query("svipvm")
 	// t.Log(data)
 	if data.Id != 0 {
 		t.Log(data)

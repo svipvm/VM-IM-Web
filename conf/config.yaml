@@ -10,7 +10,7 @@ mysql:
   port: 3306
   database: 'easygoadmin.iris.layui'
   username: 'root'
-  password: '您的密码'
+  password: ''
   charset: 'utf8mb4'
   debug: true
   logLevel: debug

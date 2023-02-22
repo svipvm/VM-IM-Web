@@ -6,6 +6,7 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/xorm"
+	"github.com/svipvm/VM-IM-Web/boots"
 )
 
 var (
@@ -21,13 +22,17 @@ func GetEngine() *xorm.Engine {
 		return engine
 	}
 
-	username := "root"
-	password := "shadow24"
-	con_addr := "127.0.0.1"
-	con_port := "3306"
-	database := "vmimw"
+	config, err := boots.ReadConfig()
+	if err != nil {
 
-	con_url := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8",
+	}
+	username := config.Mysql.Username
+	password := config.Mysql.Password
+	con_addr := config.Mysql.Host
+	con_port := config.Mysql.Port
+	database := config.Mysql.Database
+
+	con_url := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8",
 		username, password, con_addr, con_port, database)
 	engine_, err := xorm.NewEngine("mysql", con_url)
 	if err != nil {
