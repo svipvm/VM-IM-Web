@@ -16,15 +16,15 @@ func BuildIMTaskDao(engine *xorm.Engine) *IMTaskDao {
 	return &IMTaskDao{engine: engine}
 }
 
-func (dao *IMTaskDao) Insert(data *models.IMTask) error {
-	_, err := dao.engine.Table(TABLE_TASK).Insert(data)
-	return err
+func (dao *IMTaskDao) Insert(data *models.IMTask) (bool, error) {
+	affected, err := dao.engine.Table(TABLE_TASK).Insert(data)
+	return affected > 0, err
 }
 
-func (dao *IMTaskDao) Delete(id int) error {
+func (dao *IMTaskDao) Delete(id int) (bool, error) {
 	data := &models.IMTask{Id: int32(id)}
-	_, err := dao.engine.Table(TABLE_TASK).Delete(data)
-	return err
+	affected, err := dao.engine.Table(TABLE_TASK).Delete(data)
+	return affected > 0, err
 }
 
 func (dao *IMTaskDao) Query(id int) *models.IMTask {
@@ -33,13 +33,13 @@ func (dao *IMTaskDao) Query(id int) *models.IMTask {
 	if ok && err == nil {
 		return data
 	} else {
-		data.Id = 0
+		data.Id = -1
 		return data
 	}
 }
 
-func (dao *IMTaskDao) Update(data *models.IMTask) error {
+func (dao *IMTaskDao) Update(data *models.IMTask) (bool, error) {
 	// must need this id
-	_, err := dao.engine.Table(TABLE_TASK).ID(data.Id).Update(data)
-	return err
+	affected, err := dao.engine.Table(TABLE_TASK).ID(data.Id).Update(data)
+	return affected > 0, err
 }

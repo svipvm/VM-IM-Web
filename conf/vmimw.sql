@@ -29,6 +29,7 @@ CREATE TABLE `im_task` (
   `modify_data` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
+  UNIQUE KEY `comb_keys` (`user_id`, `task_name`),
   CONSTRAINT `im_task_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `im_user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 

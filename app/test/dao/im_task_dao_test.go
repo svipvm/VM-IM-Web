@@ -11,42 +11,45 @@ import (
 func TestInsertOneTask(t *testing.T) {
 	task_dao := daos.BuildIMTaskDao(utils.GetEngine())
 	task := &models.IMTask{
-		UserId: 2,
-		Name:   "test_five",
+		UserId: 23,
+		Name:   "test_five_hah",
 		Conf:   "/home/vmice/conf/one",
 	}
-	err := task_dao.Insert(task)
+	affected, err := task_dao.Insert(task)
 	if err != nil {
 		t.Log(err)
+	} else if affected == false {
+		t.Log("No something.")
 	}
 }
 
 func TestUpdateOneTask(t *testing.T) {
 	task_dao := daos.BuildIMTaskDao(utils.GetEngine())
 	task := &models.IMTask{
-		Id:    3,
+		Id:    13,
 		Name:  "new_trhee",
 		State: 1,
 	}
-	err := task_dao.Update(task)
+	affected, err := task_dao.Update(task)
 	if err != nil {
 		t.Log(err)
+	} else if affected == false {
+		t.Log("No something.")
 	}
 }
 
 func TestDeleteOneTask(t *testing.T) {
 	task_dao := daos.BuildIMTaskDao(utils.GetEngine())
-	err := task_dao.Delete(4)
+	affected, err := task_dao.Delete(12)
 	if err != nil {
 		t.Log(err)
+	} else if affected == false {
+		t.Log("No something.")
 	}
 }
 
 func TestQueryOneTask(t *testing.T) {
 	task_dao := daos.BuildIMTaskDao(utils.GetEngine())
-	data := task_dao.Query(5)
-	// t.Log(data)
-	if data.Id != 0 {
-		t.Log(data)
-	}
+	data := task_dao.Query(13)
+	t.Log(data)
 }
