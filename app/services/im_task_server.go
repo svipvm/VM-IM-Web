@@ -21,5 +21,6 @@ func BuildIMTaskServer() IMTaskServer {
 }
 
 func (s *imTaskServer) AddOneTask(task *models.IMTask) error {
-	return s.dao.Insert(task)
+	_, err := s.dao.Insert(task)
+	return err
 }

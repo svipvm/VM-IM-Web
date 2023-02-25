@@ -10,17 +10,6 @@ import (
 )
 
 func TestReadConfig(t *testing.T) {
-	// yamlFile, err := os.ReadFile("../../conf/config.yaml")
-	// if err != nil {
-	// 	t.Log(err)
-	// }
-	// // t.Log(yamlFile)
-	// config := new(boots.Config)
-	// err = yaml.Unmarshal(yamlFile, &config)
-
-	// _, filename, _, _ := runtime.Caller(0)
-	// t.Log(os.Getwd())
-	// t.Log(os.Args)
 	config, err := boots.ReadConfig()
 	if err != nil {
 		t.Log(err)

@@ -10,7 +10,7 @@ import (
 func TestAddOneTask(t *testing.T) {
 	task_service := services.BuildIMTaskServer()
 	task := &models.IMTask{
-		UserId: 3,
+		UserId: 23,
 		Name:   "finally_one",
 		Conf:   "/home/svipvm/conf/files",
 	}

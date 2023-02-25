@@ -21,5 +21,6 @@ func BuildIMUserServer() IMUserService {
 }
 
 func (s *imUserService) AddOneUser(user *models.IMUser) error {
-	return s.dao.Insert(user)
+	_, err := s.dao.Insert(user)
+	return err
 }
