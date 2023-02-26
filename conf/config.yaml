@@ -5,10 +5,10 @@ redis:
 
 mysql:
   host: '127.0.0.1'
-  port: 3306
-  database: '[database name]'
-  username: '[username]'
-  password: '[password]'
+  port: 13306
+  database: 'vmimw'
+  username: 'root'
+  password: 'shadow24'
   charset: 'utf8mb4'
   debug: true
   logLevel: debug
