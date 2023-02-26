@@ -1,9 +1,10 @@
 /* globals Chart:false, feather:false */
+// import "../chart/dist/chart.js"
 
 (function () {
   'use strict'
 
-  feather.replace()
+  // feather.replace()
 
   // Graphs
   var ctx = document.getElementById('myChart')
@@ -39,11 +40,11 @@
     },
     options: {
       scales: {
-        yAxes: [{
+        y: {
           ticks: {
             beginAtZero: false
           }
-        }]
+        }
       },
       legend: {
         display: false
